@@ -1,0 +1,25 @@
+---
+# generate geojson data for collection items with lat-longs
+---
+{
+    "type": "FeatureCollection",
+    "features": [ 
+        {% for item in site.data.iwdl %}{% if item.lat-long %}
+        {%- assign long-lat = item.lat-long | split: "," | reverse | join: "," -%}
+        {
+            "type":"Feature",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[{{ long-lat }}]
+            },            
+            "properties":{
+                "title": {{ item.title | jsonify }},
+                "creator": {{ item.creator | jsonify }},
+                "date": {{ item.date | jsonify }},
+                "subject": {{ item.subject | jsonify}},
+                "identifier": {{ item.resource-identifier | jsonify }},
+                "link":"{{ site.url }}{{ site.baseurl }}/docs/{{ item.resource-identifier | downcase }}.html"
+            }
+        }{% if forloop.last == false %}, {% endif %}{% endif %}{% endfor %}
+    ]
+}

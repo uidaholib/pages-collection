@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{%- assign fields = site.data.metadata-config -%}
+
+<div class="container">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ "/" | absolute_url }}">OER</a></li>
+        <li class="breadcrumb-item"><a href="{{ "/browse/" | absolute_url }}">Browse</a></li>
+        <li id="bc-title" class="breadcrumb-item active">{{ page.title | truncatewords: 5 }}</li>
+    </ul>
+
+<!--
+    <div class="">
+        <h2 class="">{{ page.title }}</h2>
+    </div>
+
+    <div class="row">
+
+        <div class="card col-md-4" >
+            <img class="card-img-top" src="{{ site.baseurl }}/items/thumbs/{{ page.identifier }}.jpg" alt="item thumbnail">
+            <div class="card-body">
+                <a href="" target="_blank" class="btn btn-primary" title="Document PDF - {{ page.title }}">Download PDF</a>
+            </div>
+        </div>
+        <div class=" card col-md-8">
+            <div class="card-body metadata">
+                <ul>
+                    {% for f in fields %}{% if page[f.field] %}<li><span class="field">{{ f.display-name }}:</span> <span class="field-value">{{ page[f.field] }}</span></li>{% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div> 
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                Related
+            </div>
+            <div class="card-body">
+                <p>subjects, series, collection links</p>
+            </div>
+        </div>
+    </div>
+-->
+
+    <div class="row">
+        <div class="card">
+        <div id="item-metadata" class="card-body" ><h3>Sorry, item not found.</h3></div>
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="{{ "/browse/" | relative_url }}">❮ Back to Collection Browse</a>
+    </div>
+</div>
+
+{% for f in fields %}{% if page[f.field] %}<li><span class="field">{{ f.display-name }}:</span> <span class="field-value">{{ page[f.field] }}</span></li>{% endif %}
+<script>
+var items = { 
+    {%- for item in site.data.metadata -%}
+    {{ item.indexid | jsonify }} : { "course": {{ item.course | jsonify }}, "title": {{ item.opentext | jsonify }}, "link": {{ item.link | jsonify }}, "notes": {{ item.notes | jsonify }}, "current": {{ item.current-text | jsonify }}, "cost": {{ item.current-cost | jsonify }} }{% unless forloop.last %}, {% endunless %}
+    {% endfor %} 
+};
+var queryString = window.location.search.substring(1).split("=")[1];
+var record = items[queryString];
+var info = '<h3>' + record.title + '</h3> <p>Course: ' + record.course + '<br>' + record.notes + '<br>Replaces: ' + record.current + '<br>Saves: ' + record.cost + '</p> <p><a class="btn btn-primary" target="_blank" href="' + record.link + '" role="button">Get OER &raquo;</a></p>';
+var infobox = document.getElementById("item-metadata");
+infobox.innerHTML = info;
+</script>

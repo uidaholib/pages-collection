@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>{{ site.title }} | {{ page.title }}</title>
+<meta http-equiv="Content-Language" content="en-us" >
+{% if page.layout == "page" %}{% include page-meta.html %}{% endif %}
+{% if page.layout == "item" %}{% include item-meta.html %}{% endif %}
+
+<link href="https://fonts.googleapis.com/css?family=Oswald:300,400" rel="stylesheet">
+<link rel="stylesheet" href="{{ "/assets/css/bootstrap.min.css" | absolute_url }}" type="text/css">
+<link rel="stylesheet" href="{{ "/assets/css/main.css" | absolute_url }}" type="text/css">
+
+<!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
+
+{% include google-analytics.html %}

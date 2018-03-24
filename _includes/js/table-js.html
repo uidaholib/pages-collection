@@ -1,0 +1,8 @@
+<script type="text/javascript" language="javascript" src="{{ "/assets/datatables/datatables.min.js" | relative_url }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#item-table').DataTable( {
+            dom: 'Blfrtip', buttons: [ 'excelHtml5', 'csvHtml5' ]
+        });
+    } );
+</script>

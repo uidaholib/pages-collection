@@ -1,0 +1,45 @@
+{%- assign items = site.data.metadata -%}
+<!-- load leaflet dependencies -->
+<script src="{{ "/assets/leaflet/leaflet.js" | relative_url }}"></script>
+<script src="{{ "/assets/leaflet/fuse.min.js" | relative_url }}"></script>
+<script src="{{ "/assets/leaflet/leaflet.fusesearch.js" | relative_url }}"></script>
+
+<!-- add collection map data -->
+<script>
+    var geodata = { "type": "FeatureCollection", "features": [ 
+{% for item in items %}{% if item.lat-long %}
+{%- assign long-lat = item.lat-long | split: ";" | first | split: "," | reverse | join: "," -%}
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[{{ long-lat }}] }, "properties":{ "title": {{ item.title | jsonify }}, "creator": {{ item.creator | jsonify }}, "date": {{ item.date | jsonify }}, "subjects": {{ item.subjects | jsonify}}, "id": {{ item.identifier | jsonify }} } }{% if forloop.last == false %}, {% endif %}{% endif %}{% endfor %}
+    ]};
+</script>
+
+<!-- int map and search -->
+<script>
+    /* init and set zoom */
+    var map = L.map('map').setView([{{page.mapcenter}}], {{page.zoom}});
+    /* load map layer */ 
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+    maxZoom: 24
+    }).addTo(map);
+    /* add search, https://github.com/naomap/leaflet-fusesearch */
+    var options = {
+        title: 'Search items',
+        placeholder: 'Search items...',
+        threshold: 0.35 // 1 = anything, 0 = exact match
+    };
+    var searchCtrl = L.control.fuseSearch(options);
+    searchCtrl.addTo(map);
+    searchCtrl.indexFeatures(geodata.features, ['title', 'subjects']);
+    /* add geojson marker and popup */
+    L.geoJson(geodata, {
+        pointToLayer: function(feature,latlng){
+            var marker = L.marker(latlng);
+            marker.bindPopup('<h3>' + feature.properties.title + '</h3><p>Authors: '+ feature.properties.creator + '<br>Date: ' + feature.properties.date + '<br>Subjects: ' + feature.properties.subjects + '<br>Identifier: ' + feature.properties.id + '</p><h4><a href="{{ site.baseurl }}/items/'+feature.properties.id+'.html" >View Item</a><h4>');
+            return marker;
+        }, 
+        onEachFeature: function (feature, layer) {
+            feature.layer = layer;
+        }
+    }).addTo(map);
+</script>
