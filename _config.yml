@@ -4,15 +4,23 @@
 # JEKYLL_ENV=production jekyll build
 
 # Site settings
-title: Title of Collection Site
-tagline: A short description that appears in header
-description: "A more complete description that will appear in meta tags and other locations where appropriate" 
+# title of site appears in banner
+title: GH-Pages Collection
+# tag line appears in banner
+tagline: a theme for building simple digital exhibits
+# description appears in meta tags and other locations
+description: "A more complete description that will appear in meta tags and other locations where appropriate"
+# keywords appear in meta tags 
 keywords: university of idaho, digital collections, digital humanities
+# creator email for meta tags
 email: ewilliamson@uidaho.edu
 
 # url variables
+# url is your gh-pages base, username.github.io
 url: https://uidaholib.github.io
+# baseurl is your repository's name prefixed with a /
 baseurl: /pages-collection
+
 # repository-name: jekyll-collection
 
 # collection display variables 
