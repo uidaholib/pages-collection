@@ -14,6 +14,24 @@ We will prefer commonly understood formats (such as CSV over YAML), and conventi
 
 Layout using [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/).
 
+## Get started
+
+Create a new GitHub repository by importing or forking this repo.
+
+Edit the `_config.yml` with your collection and repository info.
+
+Look at `docs/metadata-template.csv` for the metadata template, and `docs/metadata-info.csv` for metadata guidelines.
+
+Create your metadata and drop it into `_data` folder replacing `metadata.csv`.
+
+Put your objects (images, pdfs) in `objects` folder, ensuring that they match the `filename` column of your metadata. For the easiest set up, the filename should match the indexid + file extension.
+
+Create thumbs for your objects, ensuring they match indexid_sm.jpg.
+
+Edit the about page text.
+
+Edit the home page text.
+
 ## Features
 
 ### export directory
