@@ -1,7 +1,6 @@
 ---
 layout: table
 title: Browse
-permalink: /browse/
 ---
 {% assign items = site.data.metadata %}
 

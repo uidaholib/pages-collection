@@ -17,3 +17,5 @@ baseurl: /pages-collection
 
 # collection display variables 
 # see _data/metadata-fields.csv
+
+permalink: pretty
