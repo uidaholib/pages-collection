@@ -9,8 +9,8 @@
                 <li class="nav-item {% if page.url == "/" %} active{% endif %}">
                     <a class="nav-link" href="{{ "/" | relative_url }}">Home</a>
                 </li>
-                <li class="nav-item {% if page.url == "/items/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/items/" | relative_url }}">Items</a>
+                <li class="nav-item {% if page.url == "/browse/" %} active{% endif %}">
+                    <a class="nav-link" href="{{ "/browse/" | relative_url }}">Browse</a>
                 </li>
                 <li class="nav-item {% if page.url == "/map/" %} active{% endif %}">
                     <a class="nav-link" href="{{ "/map/" | relative_url }}">Map</a>
@@ -20,9 +20,6 @@
                 </li>
                 <li class="nav-item {% if page.url == "/timeline/" %} active{% endif %}">
                     <a class="nav-link" href="{{ "/timeline/" | relative_url }}">Timeline</a>
-                </li>
-                <li class="nav-item {% if page.url == "/browse/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/browse/" | relative_url }}">Browse</a>
                 </li>
                 <li class="nav-item {% if page.url == "/about/" %} active{% endif %}">
                     <a class="nav-link" href="{{ "/about/" | relative_url }}">About</a>
@@ -35,7 +32,7 @@
                 }
             </script>
             <form class="form-inline my-2 my-lg-0" role="search" id="search" onsubmit="google_search(); return false;">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <input id="google-search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
