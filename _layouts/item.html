@@ -47,6 +47,6 @@ var itemImage = '<img class="card-img-top" src="{{ site.baseurl }}/objects/thumb
 document.getElementById("item-image").innerHTML = itemImage;
 var itemLink = '<a href="{{ "/objects/" | absolute_url }}' + record.filename + '" target="_blank" class="btn btn-primary" title="Object download">Download Object</a>';
 document.getElementById("item-link").innerHTML = itemLink;
-var fields = {% for f in fields %}'<li><span class="field">{{ f.display-name }}:</span> <span class="field-value">' + record.{{ f.field }} + '</span></li>' + {% endfor %}'</p>';
+var fields = '<ul>' + {% for f in fields %}'<li><span class="field">{{ f.display-name }}:</span> <span class="field-value">' + record.{{ f.field }} + '</span></li>' + {% endfor %}'</ul>';
 document.getElementById("item-metadata").innerHTML = fields;
 </script>
