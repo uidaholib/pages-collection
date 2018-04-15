@@ -9,23 +9,16 @@ title: Browse
 This table provides sorting and basic search of the archive contents. 
 Click on the "Read" link to see the full document.
 
-<table id="item-table">
+<div class="table-responsive-md">
+<table id="item-table" class="table table-striped">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Subjects</th>
-            <th>Description</th>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+            <th scope="col">Subjects</th>
+            <th scope="col">Description</th>
+            <th>Link</th>
         </tr>
     </thead>
-    <tbody>
-{% for item in items %}        
-        <tr>
-            <td><a href="{{ site.baseurl }}/browse/item.html?id={{ item.indexid }}">{{ item.title }}</a></td>
-            <td>{{ item.date }}</td>
-            <td>{{ item.subject }}</td>
-            <td>{{ item.description | truncatewords: 15 }} <a href="{{ site.baseurl }}/items/{{ item.identifier | downcase }}.html">Read</a></td>
-        </tr>
-{% endfor %}
-    </tbody>
 </table>
+</div>

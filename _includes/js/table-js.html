@@ -2,7 +2,15 @@
 <script>
     $(document).ready(function() {
         $('#item-table').DataTable( {
-            dom: 'Blfrtip', buttons: [ 'excelHtml5', 'csvHtml5' ]
+            ajax: { url: '{{ "/data/metadata.json" | relative_url }}', dataSrc: 'documents' },
+            columns: [ { data: 'title' }, { data: 'date' }, { data: 'subjects' }, { data: 'description' }, { data: 'link' } ],
+            columnDefs: [ 
+                { "render": function ( data, type, row ) { return '<a href="' + row.link +'">'+ data +'</a>'; },"targets": 0 },
+                { "visible": false,  "targets": [ 4 ] }
+            ],
+            order: [[ 1, "desc" ]],
+            dom: 'Blfrtip', 
+            buttons: [ 'excelHtml5', 'csvHtml5' ]
         });
-    } );
+    });
 </script>
