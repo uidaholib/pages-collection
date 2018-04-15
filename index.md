@@ -5,27 +5,40 @@ title: Home
 
 <div class="jumbotron">
     <div class="container">
-        <h1 class="display-3">Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <h1 class="display-3">GH-Pages Collection</h1>
+        <p>This is a basic Jekyll theme for building a simple, open digital collection using GitHub pages.</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ "/about/" | relative_url }}" role="button">Learn more &raquo;</a></p>
     </div>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-6">  
+            <div class="">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Collection Basics</h3>
+                        <p>This collection currently contains {{ items | size }} items, ranging in date from {{ date-range | first }} to {{ date-range | last }}. </p>
+                        <p><a class="btn btn-secondary" href="{{ "/about/" | absolute_url }}" role="button">Learn more &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Data</h3>
+                        <p>The full descriptive metadata can be downloaded as a <a href="{{ "/data/iwdl-metadata.csv" | absolute_url }}" target="_blank">CSV spreadsheet</a>, <a href="{{ "/data/iwdl-metadata.json" | absolute_url }}" target="_blank">JSON</a>, or a <a href="{{ "/data/iwdl-geodata.json" | absolute_url }}" target="_blank">GeoJSON</a> export. The data can be subsetted and downloaded as CSV or Excel from the <a href="{{ "/browse/" | relative_url }}" >browse table</a>.</p>
+                        <p><a class="btn btn-secondary" href="{{ "/browse/" | relative_url }}" role="button">Browse &raquo;</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Locations</h3>
+                    <p class="text-center"><a href="{{ "/map/" | relative_url }}"><img class="img-fluid rounded" src="{{ "/assets/images/iwdl-map.jpg" | relative_url }}" alt="IWDL map"></a></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
