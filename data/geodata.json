@@ -4,7 +4,7 @@
 {
     "type": "FeatureCollection",
     "features": [ 
-        {% for item in site.data[site.metadata] %}{% if item.latitude %}
+        {% for item in site.data.metadata %}{% if item.latitude %}
         {
             "type":"Feature",
             "geometry":{
@@ -17,7 +17,7 @@
                 "date": {{ item.date | jsonify }},
                 "subject": {{ item.subject | jsonify}},
                 "identifier": {{ item.resource-identifier | jsonify }},
-                "link": {{ "/docs/" | absolute_url | append: item.resource-identifier | append: ".html" | jsonify }}
+                "link": {{ "/browse/item.html" | absolute_url | append: "?id=" | append: item.indexid | jsonify }}
             }
         }{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}
     ]
