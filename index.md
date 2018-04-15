@@ -2,6 +2,10 @@
 layout: default
 title: Home
 ---
+{%- assign items = site.data.metadata -%}
+{%- assign raw-dates = items | map: 'date' -%}
+{% capture clean-dates %}{% for date in raw-dates %}{% if date != "" %}{% if date contains "-" %}{{date | split: "-" | first }}{% elsif date contains "/" %}{{ date | split: "/" | last }}{% else %}{{ date }}{% endif %}{% unless forloop.last %};{% endunless %}{% endif %}{%- endfor -%}{% endcapture %}
+{%- assign date-range = clean-dates | split: ";" | sort  -%}
 
 <div class="jumbotron">
     <div class="container">
@@ -26,7 +30,7 @@ title: Home
                 <div class="card">
                     <div class="card-body">
                         <h3>Data</h3>
-                        <p>The full descriptive metadata can be downloaded as a <a href="{{ "/data/metadata.csv" | absolute_url }}" target="_blank">CSV spreadsheet</a>, <a href="{{ "/data/metadata.json" | absolute_url }}" target="_blank">JSON</a>, or a <a href="{{ "/data/eodata.json" | absolute_url }}" target="_blank">GeoJSON</a> export. The data can be subsetted and downloaded as CSV or Excel from the <a href="{{ "/browse/" | relative_url }}" >browse table</a>.</p>
+                        <p>The full descriptive metadata can be downloaded as a <a href="{{ "/data/metadata.csv" | absolute_url }}" target="_blank">CSV spreadsheet</a>, <a href="{{ "/data/metadata.json" | absolute_url }}" target="_blank">JSON</a>, or a <a href="{{ "/data/geodata.json" | absolute_url }}" target="_blank">GeoJSON</a> export. The data can be subsetted and downloaded as CSV or Excel from the <a href="{{ "/browse/" | relative_url }}" >browse table</a>.</p>
                         <p><a class="btn btn-secondary" href="{{ "/browse/" | relative_url }}" role="button">Browse &raquo;</a></p>
                     </div>
                 </div>
