@@ -4,13 +4,12 @@
 {
     "type": "FeatureCollection",
     "features": [ 
-        {% for item in site.data.iwdl %}{% if item.lat-long %}
-        {%- assign long-lat = item.lat-long | split: "," | reverse | join: "," -%}
+        {% for item in site.data[site.metadata] %}{% if item.latitude %}
         {
             "type":"Feature",
             "geometry":{
                 "type":"Point",
-                "coordinates":[{{ long-lat }}]
+                "coordinates":[{{ item.longitude }},{{ item.latitude }}]
             },            
             "properties":{
                 "title": {{ item.title | jsonify }},
@@ -18,8 +17,8 @@
                 "date": {{ item.date | jsonify }},
                 "subject": {{ item.subject | jsonify}},
                 "identifier": {{ item.resource-identifier | jsonify }},
-                "link":"{{ site.url }}{{ site.baseurl }}/docs/{{ item.resource-identifier | downcase }}.html"
+                "link": {{ "/docs/" | absolute_url | append: item.resource-identifier | append: ".html" | jsonify }}
             }
-        }{% if forloop.last == false %}, {% endif %}{% endif %}{% endfor %}
+        }{% unless forloop.last %}, {% endunless %}{% endif %}{% endfor %}
     ]
 }

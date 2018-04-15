@@ -26,7 +26,7 @@ title: Home
                 <div class="card">
                     <div class="card-body">
                         <h3>Data</h3>
-                        <p>The full descriptive metadata can be downloaded as a <a href="{{ "/data/iwdl-metadata.csv" | absolute_url }}" target="_blank">CSV spreadsheet</a>, <a href="{{ "/data/iwdl-metadata.json" | absolute_url }}" target="_blank">JSON</a>, or a <a href="{{ "/data/iwdl-geodata.json" | absolute_url }}" target="_blank">GeoJSON</a> export. The data can be subsetted and downloaded as CSV or Excel from the <a href="{{ "/browse/" | relative_url }}" >browse table</a>.</p>
+                        <p>The full descriptive metadata can be downloaded as a <a href="{{ "/data/metadata.csv" | absolute_url }}" target="_blank">CSV spreadsheet</a>, <a href="{{ "/data/metadata.json" | absolute_url }}" target="_blank">JSON</a>, or a <a href="{{ "/data/eodata.json" | absolute_url }}" target="_blank">GeoJSON</a> export. The data can be subsetted and downloaded as CSV or Excel from the <a href="{{ "/browse/" | relative_url }}" >browse table</a>.</p>
                         <p><a class="btn btn-secondary" href="{{ "/browse/" | relative_url }}" role="button">Browse &raquo;</a></p>
                     </div>
                 </div>
