@@ -2,6 +2,8 @@
 
 https://github.com/uidaholib/pages-collection
 
+> **project in progress!**
+
 a project to generate a digital collection site using gh-pages given:
 - csv of collection metadata
 - directory of images or pdfs
@@ -22,7 +24,7 @@ Edit the `_config.yml` with your collection and repository info.
 
 Look at `docs/metadata-template.csv` for the metadata template, and `docs/metadata-info.csv` for metadata guidelines.
 
-Create your metadata and drop it into `_data` folder replacing `metadata.csv`.
+Create your metadata following the template and drop it into `_data` folder replacing `metadata.csv`.
 
 Edit the `_data/metadata-config.csv` to choose the order and display name for the metadata fields. 
 The fields will display in the order given in the csv, and will use the "display-name" value. 
@@ -38,6 +40,7 @@ Edit the home page text.
 
 ## Features
 
-### export directory
+### data export directory
 
-autogenerate metadata export formats for sharing or ingest into specific other tools.
+The project automatically generates versions of you metadata that are exposed in the `/data/` directory for sharing or ingest into other tools.
+Visualizations such as the table and subjects make use of the json stored in `/data`.
