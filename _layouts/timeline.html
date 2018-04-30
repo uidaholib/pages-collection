@@ -2,15 +2,7 @@
 layout: page
 ---
 {{ content }}
-<style>
-th, td {
-  border-bottom: 1px solid #ddd;
-  padding:10px;
-}
-tr:nth-child(odd) {background-color: #f4f4f4;}
-tr:nth-child(even) {background-color: #b9b4b4;}
-tr:hover {background-color: #666;}
-</style>
+
 {% assign items = site.data.metadata %}
 
 {% assign raw-dates = site.data.metadata | map: 'date' | compact%}
