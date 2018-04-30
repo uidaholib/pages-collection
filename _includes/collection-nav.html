@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-secondary border-bottom">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#page-nav" aria-controls="page-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,6 +20,9 @@
                 </li>
                 <li class="nav-item {% if page.url == "/timeline/" %} active{% endif %}">
                     <a class="nav-link" href="{{ "/timeline/" | relative_url }}">Timeline</a>
+                </li>
+                <li class="nav-item {% if page.url == "/data/" %} active{% endif %}">
+                    <a class="nav-link" href="{{ "/data/" | relative_url }}">Data</a>
                 </li>
                 <li class="nav-item {% if page.url == "/about/" %} active{% endif %}">
                     <a class="nav-link" href="{{ "/about/" | relative_url }}">About</a>
