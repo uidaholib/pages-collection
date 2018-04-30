@@ -30,9 +30,9 @@ Edit the `_data/metadata-config.csv` to choose the order and display name for th
 The fields will display in the order given in the csv, and will use the "display-name" value. 
 Fields not included here will not be displayed.
 
-Put your objects (images, pdfs) in `objects` folder, ensuring that they match the `filename` column of your metadata. For the easiest set up, the filename should match the indexid + file extension.
+Put your objects (jpgs or pdfs) in `objects` folder, ensuring that they match the `filename` column of your metadata. For the easiest set up, the filename should match the indexid + file extension.
 
-Create thumbs for your objects, ensuring they match indexid_sm.jpg.
+Create thumbs for your objects, ensuring they match the pattern indexid_sm.jpg.
 
 Edit the about page text.
 
@@ -40,7 +40,10 @@ Edit the home page text.
 
 ## Features
 
-### data export directory
+### data export 
 
-The project automatically generates versions of you metadata that are exposed in the `/data/` directory for sharing or ingest into other tools.
-Visualizations such as the table and subjects make use of the json stored in `/data`.
+The project automatically generates versions of your metadata that are exposed in the `/data/` directory for sharing or ingest into other tools.
+In fact, the collection visualizations such as the table and subjects make use of the json stored in `/data/`.
+Furthermore, the metadata can be subsetted and exported from the table on the data page.
+
+### leaflet map
