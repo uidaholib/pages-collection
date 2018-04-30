@@ -1,0 +1,35 @@
+---
+layout: page
+---
+{{ content }}
+<style>
+th, td {
+  border-bottom: 1px solid #ddd;
+  padding:10px;
+}
+tr:nth-child(odd) {background-color: #f4f4f4;}
+tr:nth-child(even) {background-color: #b9b4b4;}
+tr:hover {background-color: #666;}
+</style>
+{% assign items = site.data.metadata %}
+
+{% assign raw-dates = site.data.metadata | map: 'date' | compact%}
+{% capture clean-years %}{% for date in raw-dates %}{% if date contains "-" %}{{date | split: "-" | first }}{% elsif date contains "/" %}{{ date | split: "/" | last }}{% else %}{{ date }}{% endif %}{% unless forloop.last %};{% endunless %}{%- endfor -%}{% endcapture %}
+{%- assign years = clean-years | split: ";" | sort  -%}
+
+<h3><a href="#{{ years | first }}">{{ years | first }}</a> to <a href="#{{ years | last }}">{{ years | last }}</a></h3>
+
+{%- assign uniqueDates = years | uniq | sort -%}
+
+<table class="table table-striped">
+  {%for date in uniqueDates %}
+  <tr>
+    <th><h3 id="{{date}}">{{date}}</h2></th>
+    <td>
+    {%for item in items %}{% if item.date contains date %}
+    <a href="{{ "/browse/item.html" | absolute_url | append: "?id=" | append: item.indexid }}" target="_blank"><img class="lazy" data-original="{{ site.baseurl }}/objects/thumbs/{{ item.indexid }}_sm.jpg" style="margin:10px;" alt="{{item.title}}"  title="{{item.title}} | {{item.date}}"/></a>
+    {% endif %}{%endfor%}
+    </td>
+  </tr>
+  {%endfor%}
+</table>
