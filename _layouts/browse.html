@@ -26,7 +26,7 @@ layout: page
             <h3 class="card-title">{{ item.title }}</h3>
             <p class="card-text"><strong>Date:</strong> {{ item.date }}</p>
             <p>
-                {% assign subjects = item.subjects | split:';' %}
+                {% assign subjects = item.subject | split:';' %}
                 {% for subject in subjects %}{% if subject !=" " %}
                 <a class="btn btn-sm btn-secondary m-1" data-filter="{{ subject | trim }}" href="#{{ subject | trim }}">{{ subject }}</a> 
                 {% endif %}{% endfor %} 
