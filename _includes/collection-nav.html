@@ -6,37 +6,21 @@
 
         <div class="collapse navbar-collapse" id="page-nav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% if page.url == "/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/" | relative_url }}">Home</a>
+                {% for nav in site.data.nav-configuration %}
+                <li class="nav-item {% if page.url == nav.stub %}active{% endif %}">
+                    <a class="nav-link" href="{{ nav.stub | relative_url }}">{{ nav.display-text }}</a>
                 </li>
-                <li class="nav-item {% if page.url == "/browse/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/browse/" | relative_url }}">Browse</a>
-                </li>
-                <li class="nav-item {% if page.url == "/map/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/map/" | relative_url }}">Map</a>
-                </li>
-                <li class="nav-item {% if page.url == "/subjects/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/subjects/" | relative_url }}">Subjects</a>
-                </li>
-                <li class="nav-item {% if page.url == "/timeline/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/timeline/" | relative_url }}">Timeline</a>
-                </li>
-                <li class="nav-item {% if page.url == "/data/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/data/" | relative_url }}">Data</a>
-                </li>
-                <li class="nav-item {% if page.url == "/about/" %} active{% endif %}">
-                    <a class="nav-link" href="{{ "/about/" | relative_url }}">About</a>
-                </li>
+                {% endfor %}
             </ul>
             <script>
-                function google_search() {
-                    var query = document.getElementById("google-search").value;
+                function site_search() {
+                    var query = document.getElementById("site-search").value;
                     window.open("{{ '/search/index.html' | absolute_url }}?q=" + query, "_self" );
                 }
             </script>
-            <form class="form-inline my-2 my-lg-0" role="search" id="search" onsubmit="google_search(); return false;">
-                <input id="google-search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline my-2 my-lg-0" role="search" id="search" onsubmit="site_search(); return false;">
+                <input id="site-search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </div>    
