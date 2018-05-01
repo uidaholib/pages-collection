@@ -7,8 +7,9 @@ var store = [
     { 
         "indexId": {{ item.indexid | jsonify }},
         "title": {{ item.title | jsonify }},
-        "subjects": {{ item.subject | jsonify }},
-        "abstract": {{ item.description | jsonify }}
+        "subjects": {{ item.subject | split: ";" | jsonify }},
+        "date": {{ item.date | jsonify }},
+        "description": {{ item.description | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
 ];
@@ -16,7 +17,8 @@ var store = [
 var idx = lunr(function () {
   this.field('title')
   this.field('subjects')
-  this.field('abstract')
+  this.field('description')
+  this.field('date')
   this.ref('id')
 
   //this.pipeline.remove(lunr.trimmer)
@@ -24,12 +26,14 @@ var idx = lunr(function () {
   for (var item in store) {
     this.add({
       title: store[item].title,
-      subjects: store[item].subjects,
-      abstract: store[item].abstract,
+      subjects: store[item].subjects.join("; "),
+      description: store[item].description,
+      date: store[item].date,
       id: item
     })
   }
 });
+
 /* search function */
 $(document).ready(function() {
   $('input#search').on('keyup', function () {
@@ -53,15 +57,19 @@ $(document).ready(function() {
     for (var item in result) {
       var ref = result[item].ref;
       var searchitem =
-        '<div class="">'+
-            '<h2 class="">'+
-              '<a href="{{ site.baseurl }}/browse/item.html?id=' + store[ref].indexId+'">'+store[ref].title+'</a>'+
-            '</h2>'+
-            '<p class="">Extract: '+store[ref].abstract.split(" ").splice(0,20).join(" ")+'...</p>'+
-            '<p class="">Subjects: '+store[ref].subjects+'</p>'+
-        '</div>';
+        '<tr>'+
+            '<td class="">' +
+              '<p class="h4"><a href="{{ site.baseurl }}/browse/item.html?id=' + store[ref].indexId + '">' + store[ref].title+ '</a></p>' +
+              '<p class="ml-3">' +
+              store[ref].date + '. ' +
+              store[ref].description.split(" ").splice(0,20).join(" ") + '...<br>' +
+              'Subjects: ' + store[ref].subjects.join("; ") +
+              '</p></td>' +
+        '</tr>';
       resultdiv.append(searchitem);
     }
   });
+  var queryString = window.location.search.substring(1).split("=")[1];
+  $('input#search').val(queryString);
 });
 </script>
