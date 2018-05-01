@@ -15,10 +15,10 @@ layout: page
     <span class="info2"><span id="numberof">{{ items | size }}</span> of {{ items | size }} items</span>
 </h2>
 
-<div class="row" id="isocontainer-new">
+<div class="row" id="browse-items">
     {% for item in items %}
     <div class="item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" >
-        <a target="_blank" href="{{ "/browse/item.html" | absolute_url | append: "?id=" | append: item.indexid }}">
+        <a href="{{ "/browse/item.html" | absolute_url | append: "?id=" | append: item.indexid }}">
             {% if forloop.index < 20 %}<img class="card-img-top lazy"  src="{{ site.baseurl }}/objects/thumbs/{{ item.indexid }}_sm.jpg" alt="Card image cap">
             {% else %}<img class="card-img-top lazy"  data-original="{{ site.baseurl }}/objects/thumbs/{{ item.indexid }}_sm.jpg" alt="Card image cap">{% endif %}
         </a>
@@ -28,7 +28,7 @@ layout: page
             <p>
                 {% assign subjects = item.subject | split:';' %}
                 {% for subject in subjects %}{% if subject !=" " %}
-                <a class="btn btn-sm btn-secondary m-1" data-filter="{{ subject | trim }}" href="#{{ subject | trim }}">{{ subject }}</a> 
+                <a class="btn btn-sm btn-secondary m-1" data-filter="{{ subject | trim }}" href="{{ subject | trim | uri_escape | prepend: "/browse/#" | relative_url }}">{{ subject }}</a> 
                 {% endif %}{% endfor %} 
             </p>
             <p class="card-text">{{item.description | truncatewords: 20}}</p>
@@ -37,5 +37,5 @@ layout: page
             </p>
          </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
