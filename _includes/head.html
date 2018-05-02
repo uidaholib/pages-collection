@@ -11,4 +11,4 @@
 
 <!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
 
-{% include google-analytics.html %}
+{% if site.google-tracking-id %}{% include google-analytics.html %}{% endif %}

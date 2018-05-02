@@ -1,29 +1,32 @@
-# Jekyll Digital Collection Generator, GH-Pages version
-
-# Note: use environment variable on build command to include analytics
-# JEKYLL_ENV=production jekyll build
+# pages-collection
+# a Jekyll Digital Collection Generator 
+# designed for GH-Pages
 
 # Site settings
+
 # title of site appears in banner
 title: GH-Pages Collection
-# tag line appears in banner
+# tagline appears in banner
 tagline: a theme for building simple digital exhibits
 # description appears in meta tags and other locations
 description: "A more complete description that will appear in meta tags and other locations where appropriate"
 # keywords appear in meta tags 
-keywords: university of idaho, digital collections, digital humanities
+keywords: "university of idaho, digital collections, digital humanities"
 # creator email for meta tags
 email: ewilliamson@uidaho.edu
 
-# url variables
 # url is your gh-pages base, username.github.io
 url: https://uidaholib.github.io
-# baseurl is your repository's name prefixed with a /
+# baseurl is your github repository's name prefixed with a /
 baseurl: /pages-collection
 
-# repository-name: jekyll-collection
+# google services
+# leave these blank or comment out to NOT include google code
+google-tracking-id: "UA-74844011-1"
+google-cse-id: "002151703305773322890:1pu3smhw1t8"
 
-# collection display variables 
-# see _data/metadata-fields.csv
-
+# build settings
 permalink: pretty
+
+# Note: use environment variable on build command to include analytics
+# JEKYLL_ENV=production jekyll build
