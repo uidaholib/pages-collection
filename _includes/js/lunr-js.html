@@ -7,18 +7,22 @@ var store = [
     { 
         "indexId": {{ item.indexid | jsonify }},
         "title": {{ item.title | jsonify }},
+        "creator": {{ item.creator | jsonify }},
         "subjects": {{ item.subject | split: ";" | jsonify }},
         "date": {{ item.date | jsonify }},
-        "description": {{ item.description | jsonify }}
+        "description": {{ item.description | jsonify }},
+        "place": {{ item.place | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
 ];
 /* initialize lunr */
 var idx = lunr(function () {
   this.field('title')
+  this.field('creator')
   this.field('subjects')
   this.field('description')
   this.field('date')
+  this.field('place')
   this.ref('id')
 
   //this.pipeline.remove(lunr.trimmer)
@@ -26,9 +30,11 @@ var idx = lunr(function () {
   for (var item in store) {
     this.add({
       title: store[item].title,
+      creator: store[item].creator,
       subjects: store[item].subjects.join("; "),
       description: store[item].description,
       date: store[item].date,
+      place: store[item].place,
       id: item
     })
   }
