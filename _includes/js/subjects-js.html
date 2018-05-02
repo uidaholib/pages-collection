@@ -4,7 +4,7 @@
     var counts = subjectTerms.map(function(obj){ return obj.count; });
     var countMax = counts.reduce(function(a, b) { return Math.max(a, b); });
     var countMin = 0;
-    var cloud = document.getElementById("htmltagcloud");
+    var cloud = document.getElementById("cloud");
     /* Fisher-Yates shuffle https://bost.ocks.org/mike/shuffle/ */
     /* function shuffle(array) {
         var m = array.length, t, i;
@@ -26,7 +26,7 @@
         var item;
         for (i = 0; i < array.length; i++) {
             var size = mapSize(array[i].count)
-            item = '<p class="wrd tagcloud' + size + '"><a href="' + array[i].link + '">' + array[i].subject + '</a></p>';
+            item = '<a class="btn btn-outline-secondary m-1 wrd tagcloud' + size + '" href="' + array[i].link + '">' + array[i].subject + '</a>';
             cloud.innerHTML += item;
         }
     }
