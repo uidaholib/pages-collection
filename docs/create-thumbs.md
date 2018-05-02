@@ -41,17 +41,17 @@ Check the [commandline options](https://www.imagemagick.org/script/command-line-
 - open terminal in the `objects` directory.
 - use a bash loop with ImageMagick to create thumbs.
 
-Resize all with 500px max height: 
+Resize all with 300px max height: 
 
-`for f in *.jpg; do magick "$f" -resize x500 -flatten "thumbs/${f%.jpg}_sm.jpg"; done`
+`for f in *.jpg; do magick "$f" -resize x300 -flatten "thumbs/${f%.jpg}_sm.jpg"; done`
 
-Resize all with 500px max width:
+Resize all with 300px max width:
 
-`for f in *.jpg; do magick "$f" -resize 500x -flatten "thumbs/${f%.jpg}_sm.jpg"; done`
+`for f in *.jpg; do magick "$f" -resize 300x -flatten "thumbs/${f%.jpg}_sm.jpg"; done`
 
 Or set max for both:
 
-`for f in *.jpg; do magick "$f" -resize 500x500 -flatten "thumbs/${f%.jpg}_sm.jpg"; done`
+`for f in *.jpg; do magick "$f" -resize 300x300 -flatten "thumbs/${f%.jpg}_sm.jpg"; done`
 
 ## Create Thumbs for PDFs
 
@@ -62,9 +62,9 @@ Or set max for both:
 
 create an image representing a PDF by grabbing the first page from each PDF in a directory and creating a JPEG. 
 
-`for f in *.pdf; do magick "$f"[0] -resize x500 -flatten "${f%.pdf}.jpg"; done`
+`for f in *.pdf; do magick "$f"[0] -resize 300x300 -flatten "thumbs/${f%.pdf}_sm.jpg"; done`
 
-For higher quality result, add `-density 600`, for example: `for f in *.pdf; do magick -density 600 "$f"[0] -resize x500 -flatten "${f%.pdf}.jpg"; done`. 
+For higher quality result, add `-density 600`, for example: `for f in *.pdf; do magick -density 600 "$f"[0] -resize 300x300 -flatten "thumbs/${f%.pdf}_sm.jpg"; done`. 
 
 Before working with the PDF, Magick must render it at a specific resolution.
 The default [density](https://www.imagemagick.org/script/command-line-options.php#density) is 72 dpi, so bumping it up to 300 or 600 will greatly enhance the quality of most image, but also significantly slow processing.
