@@ -1,4 +1,14 @@
-# Add Google CSE
+# Add Google Services
+
+Why or why not? 
+
+Google CSE
+
+Google Analytics 
+
+Google WebMaster Tools
+
+## Add Google CSE
 
 After your site has been up for awhile, [Google Custom Search Engine](https://cse.google.com/cse/) can provide a quality search of your content.
 To add one to your collection site, visit CSE, set up the search, then copy the code snippet into this project.

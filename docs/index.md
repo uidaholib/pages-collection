@@ -1,47 +1,35 @@
+# pages-collection
 
-## Thumbs
+## Build a Digital Collection!
 
-CONTENTdm get thumb utility:
-`/utils/getthumbnail/collection/alias/id/pointer`
+1. create [collection project repository](01-project.md)
+2. prepare your [collection images and/or pdfs](02-objects.md)
+3. prepare your [collection metadata](03-metadata.md)
+4. [configure site](04-configure.md)
+5. [configure navigation and pages](05-pages.md)
+6. add [descriptive content](06-content.md)
+7. tweak [styles](07-style.md)
+8. add [Google services](google.md)
 
-run jekyll to create thumbnail-fetch.txt in utilities. 
-use wget to harvest thumbs, `wget -i "thumbnail-fetch.txt"`.
-if thumbs have no extension, add using `for f in *; do mv "$f" "$f.jpg"; done`.
+## Quick version
 
-script to generate thumbs from directory of pdfs or images?
+Create a new GitHub repository by importing or forking this repo.
 
-## pdfs
+Edit the `_config.yml` with your collection and repository info.
 
-CONTENTdm getfile utility:
-`/utils/getfile/collection/alias/id/pointer/filename/name`
+Look at `docs/metadata-template.csv` for the metadata template, and `docs/metadata-info.csv` for metadata guidelines.
 
-## CDM Page flip view
+Create your metadata following the template and drop it into `_data` folder replacing `metadata.csv`.
 
-`<iframe src="https://digital.lib.uidaho.edu/cdm/pageflip/collection/idahowater/id/{{ page.cdm-number }}/type/singleitem/pftype/pdf"></iframe>`
+Edit the `_data/metadata-config.csv` to choose the order and display name for the metadata fields. 
+The fields will display in the order given in the csv, and will use the "display-name" value. 
+Fields not included here will not be displayed.
 
-## metadata handling
+Put your objects (jpgs or pdfs) in `objects` folder, ensuring that they match the `filename` column of your metadata. 
+For the easiest set up, the filename should match the indexid + file extension.
 
-The data file `metadata-fields.csv` contains information for populating document pages and machine readable markup. 
-The "field" column matches the columns used in the collection metadata file. 
-The fields will be displayed in the given order.
-If the field should be displayed visually, give it a name in "display-name" (blanks will not be displayed).
-If the field should be visually highlighted, add true to "featured" column (false will be displayed only on an additional click).
-For machine markup, include a schema map value.
+Create thumbs for your objects in the `objects/thumbnails` folder, ensuring they match the pattern indexid_sm.jpg.
 
-create csv mapping field to display name
+Edit the about page text.
 
-## breadcrumbs
-
-document pages have schema.org markup for breadcrumbs, used by google to give context,
-
-https://developers.google.com/search/docs/data-types/breadcrumb
-
-## notes
-
-gen plug that takes csv and creates md stubs with elements as front matter
-
-{% assign fields = "title,creator,date-original,date,description,location,lat-long,subject,collection,series,iwrri-number,resource-identifier,rights-management,publisher,contributors,contributing-institution,format,type,metadata-cataloger,date-digital,reference-url" | split: ',' %}
-
-make pages grouping based on controlled fields, collection, series 
-
-pdf embed options, https://pdfobject.com/static.html
+Edit the home page text.

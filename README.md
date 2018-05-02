@@ -4,46 +4,46 @@ https://github.com/uidaholib/pages-collection
 
 > **project in progress!**
 
-a project to generate a digital collection site using gh-pages given:
-- csv of collection metadata
-- directory of images or pdfs
+A project to generate a free and simple digital collection site using [gh-pages](https://pages.github.com/) given:
 
-Since it uses gh-pages, it is only suitable for small collections, with lower resolution images.
-It is intended as a simple template for hands-on teaching about digital libraries.
+- a CSV of collection metadata
+- a folder of JPEG images or PDF documents
 
-Configuration and set up will be as easy as possible, and will be documented step-by-step.
-We will prefer commonly understood formats (such as CSV over YAML), and convention over configuration (follow the example over learn all the options).
+See [Getting Started Docs](docs/index.md) for detailed information.
 
-Layout using [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/).
+`pages-collection` is intended as a simple template for hands-on teaching about digital libraries.
+It can be used in a workshop setting to take participants through digitization and metadata creation, to having a live collection site hosted on GitHub.
 
-## Get started
+Similar learning experiences use [Omeka](https://omeka.org/) or other DAMS/[CMS](https://en.wikipedia.org/wiki/Content_management_system) platforms that are overkill for one off projects.
+Although CMS feature familiar GUI administration interfaces, they are not simple to learn and customize.
+`pages-collection` aims to be well documented and easy to configure by following the example.
+A project in "minimal computing", it provides a depth of learning opportunities, allowing users to take complete ownership over the project and make their work open to the world.
 
-Create a new GitHub repository by importing or forking this repo.
+Skillz:
 
-Edit the `_config.yml` with your collection and repository info.
+- Git and GitHub basics
+- [Markdown](https://guides.github.com/features/mastering-markdown/), plaintext writing and content creation
+- HTML, CSS, and JS literacy
+- commandline literacy
+- GitHub collaboration and project management
+- [Jekyll](https://jekyllrb.com/) basics
+- working in the Open, open source and open data
 
-Look at `docs/metadata-template.csv` for the metadata template, and `docs/metadata-info.csv` for metadata guidelines.
+**Note:** 
+Since `pages-collection` uses gh-pages, it is only suitable for small collections, with lower resolution images.
+GitHub repositories are limited to 1GB.
 
-Create your metadata following the template and drop it into `_data` folder replacing `metadata.csv`.
-
-Edit the `_data/metadata-config.csv` to choose the order and display name for the metadata fields. 
-The fields will display in the order given in the csv, and will use the "display-name" value. 
-Fields not included here will not be displayed.
-
-Put your objects (jpgs or pdfs) in `objects` folder, ensuring that they match the `filename` column of your metadata. For the easiest set up, the filename should match the indexid + file extension.
-
-Create thumbs for your objects, ensuring they match the pattern indexid_sm.jpg.
-
-Edit the about page text.
-
-Edit the home page text.
+> We prefer commonly understood formats (such as CSV spreadsheets over YAML), and convention over configuration (follow the example over learn all the options).
 
 ## Features
 
-### data export 
+- [Jekyll](https://jekyllrb.com/) for gh-pages 
+- Layout using [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/).
+- [jQuery](https://jquery.com/)
+- Mapping using [Leaflet.js](http://leafletjs.com/)
+- Tables using [DataTables](https://datatables.net/)
+- Rich markup using [Schema.org](http://schema.org) and [Open Graph protocol](http://ogp.me/) standards.
 
-The project automatically generates versions of your metadata that are exposed in the `/data/` directory for sharing or ingest into other tools.
-In fact, the collection visualizations such as the table and subjects make use of the json stored in `/data/`.
-Furthermore, the metadata can be subsetted and exported from the table on the data page.
+## Build a Digital Collection! 
 
-### leaflet map
+Check out the [Docs](docs/index.md).
