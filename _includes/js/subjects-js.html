@@ -1,5 +1,5 @@
 <script>
-    $.getJSON("{{ "/data/subjects.json" | relative_url }}", function(json){
+$.getJSON("{{ "/data/subjects.json" | relative_url }}", function(json){
     var subjectTerms = json.subjects;
     var counts = subjectTerms.map(function(obj){ return obj.count; });
     var countMax = counts.reduce(function(a, b) { return Math.max(a, b); });

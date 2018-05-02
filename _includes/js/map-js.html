@@ -8,7 +8,7 @@
 <script>
     var geodata = { "type": "FeatureCollection", "features": [ 
 {% for item in items %}{% if item.latitude %}
-    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[{{ item.longitude }},{{ item.latitude }}] }, "properties":{ "title": {{ item.title | jsonify }}, "creator": {{ item.creator | jsonify }}, "date": {{ item.date | jsonify }}, "subjects": {{ item.subject | jsonify}}, "id": {{ item.indexid | jsonify }} } }{% if forloop.last == false %}, {% endif %}{% endif %}{% endfor %}
+    { "type":"Feature", "geometry":{ "type":"Point", "coordinates":[{{ item.longitude }},{{ item.latitude }}] }, "properties":{ "title": {{ item.title | jsonify }}, "creator": {{ item.creator | jsonify }}, "date": {{ item.date | jsonify }}, "subjects": {{ item.subject | split: ";" | join: "; " | jsonify }}, "place": {{ item.place | jsonify }}, "id": {{ item.indexid | jsonify }} } }{% if forloop.last == false %}, {% endif %}{% endif %}{% endfor %}
     ]};
 </script>
 
@@ -29,12 +29,12 @@
     };
     var searchCtrl = L.control.fuseSearch(options);
     searchCtrl.addTo(map);
-    searchCtrl.indexFeatures(geodata.features, ['title', 'subjects']);
+    searchCtrl.indexFeatures(geodata.features, ['title', 'subjects', 'place']);
     /* add geojson marker and popup */
     L.geoJson(geodata, {
         pointToLayer: function(feature,latlng){
             var marker = L.marker(latlng);
-            marker.bindPopup('<h3>' + feature.properties.title + '</h3><p>Creators: '+ feature.properties.creator + '<br>Date: ' + feature.properties.date + '<br>Subjects: ' + feature.properties.subjects + '</p><h4><a href="{{ site.baseurl }}/browse/item.html?id='+feature.properties.id+'" >View Item</a><h4>');
+            marker.bindPopup('<h3>' + feature.properties.title + '</h3>' + '<img class="" src="{{ site.baseurl }}/objects/thumbs/' +  feature.properties.id + '_sm.jpg" alt="thumbnail">' + '<p>Date: ' + feature.properties.date + '<br>Subjects: ' + feature.properties.subjects + '<br>Location: ' + feature.properties.place + '</p><h4><a href="{{ site.baseurl }}/browse/item.html?id=' + feature.properties.id + '" >View Item</a><h4>');
             return marker;
         }, 
         onEachFeature: function (feature, layer) {
