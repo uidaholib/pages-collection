@@ -33,7 +33,7 @@ layout: page
             </p>
             <p class="card-text">{{item.description | truncatewords: 20}}</p>
             <p>
-                <a href="{{ "/browse/item.html" | absolute_url | append: "?id=" | append: item.indexid }}" target="_blank" class="btn btn-info" title="link to {{ item.title }}">Go to Item</a>
+                <a href="{{ "/browse/item.html" | absolute_url | append: "?id=" | append: item.indexid }}" class="btn btn-info" title="link to {{ item.title }}">Go to Item</a>
             </p>
          </div>
     </div>
