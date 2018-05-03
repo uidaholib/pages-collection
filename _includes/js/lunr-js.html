@@ -1,29 +1,16 @@
 {%- assign items = site.data.metadata -%}
-<script src="{{ "/assets/js/lunr.min.js" | relative_url }}"></script>
+<script src="{{ '/assets/js/lunr.min.js' | absolute_url }}"></script>
+<script src="{{ '/assets/js/lunr-store.js' | absolute_url }}"></script>
 <script>
-/* create lunr store */
-var store = [ 
-    {% for item in items %} 
-    { 
-        "indexId": {{ item.indexid | jsonify }},
-        "title": {{ item.title | jsonify }},
-        "creator": {{ item.creator | jsonify }},
-        "subjects": {{ item.subject | split: ";" | jsonify }},
-        "date": {{ item.date | jsonify }},
-        "description": {{ item.description | jsonify }},
-        "place": {{ item.place | jsonify }}
-    }{%- unless forloop.last -%},{%- endunless -%}
-    {%- endfor -%}
-];
 /* initialize lunr */
 var idx = lunr(function () {
+  this.ref('id')
   this.field('title')
   this.field('creator')
   this.field('subjects')
   this.field('description')
   this.field('date')
   this.field('place')
-  this.ref('id')
 
   //this.pipeline.remove(lunr.trimmer)
 
@@ -43,8 +30,11 @@ var idx = lunr(function () {
 /* search function */
 function lunr_search () {
   var resultdiv = $('#results');
-  var query = $('input#search').val().toLowerCase();
-  /*var result =
+  var query = $('input#search').val();//.toLowerCase();
+  /* basic search that supports operators */
+  var result = idx.search(query); 
+  /* more fuzzy search, but doesn't support operators:
+  var result =
     idx.query(function (q) {
       query.split(lunr.tokenizer.separator).forEach(function (term) {
         q.term(term, { boost: 100 })
@@ -56,9 +46,8 @@ function lunr_search () {
         }
       })
     });*/
-  var result = idx.search(query); 
   resultdiv.empty();
-  resultdiv.prepend('<p class="results__found">'+result.length+' Result(s) found</p>');
+  resultdiv.prepend('<p class="">' + result.length + ' Result(s) found</p>');
   for (var item in result) {
     var ref = result[item].ref;
     var searchitem =
@@ -68,7 +57,8 @@ function lunr_search () {
             '<p class="ml-3">' +
             store[ref].date + '. ' +
             store[ref].description.split(" ").splice(0,20).join(" ") + '...<br>' +
-            'Subjects: ' + store[ref].subjects.join("; ") +
+            'Subjects: ' + store[ref].subjects.join("; ") + '. ' +
+            store[ref].place +
             '</p></td>' +
       '</tr>';
     resultdiv.append(searchitem);
