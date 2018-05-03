@@ -1,9 +1,10 @@
 <script>
 $.getJSON("{{ "/data/subjects.json" | relative_url }}", function(json){
-    var subjectTerms = json.subjects;
+    /* set the min count for subject terms, too many terms = slow page load! */
+    var minSize = 0;
+    var subjectTerms = json.subjects.filter(function(x) { return x.count > minSize; });
     var counts = subjectTerms.map(function(obj){ return obj.count; });
     var countMax = counts.reduce(function(a, b) { return Math.max(a, b); });
-    var countMin = 0;
     var cloud = document.getElementById("cloud");
     /* Fisher-Yates shuffle https://bost.ocks.org/mike/shuffle/ */
     /* function shuffle(array) {
@@ -16,9 +17,7 @@ $.getJSON("{{ "/data/subjects.json" | relative_url }}", function(json){
         }
         return array;
     } */
-    function mapSize(x) {
-        return Math.round((x - countMin) * (9) / (countMax - countMin) + 1);
-    }
+    function mapSize(x) { return Math.round(x * 9 / countMax + 1); }
     /* create cloud */
     function makeGrid(array) {
         var i;
