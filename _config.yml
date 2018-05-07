@@ -19,6 +19,8 @@ email: ewilliamson@uidaho.edu
 url: https://uidaholib.github.io
 # baseurl is your github repository's name prefixed with a /
 baseurl: /pages-collection
+# repository is the github repository's full url
+repository: https://github.com/uidaholib/pages-collection
 
 # google services [optional!]
 # leave these blank or comment out to NOT include google code
