@@ -22,13 +22,13 @@ layout: page
             {% if forloop.index < 20 %}<img class="card-img-top lazy"  src="{{ site.baseurl }}/objects/thumbs/{{ item.indexid }}_sm.jpg" alt="Card image cap">
             {% else %}<img class="card-img-top lazy"  data-original="{{ site.baseurl }}/objects/thumbs/{{ item.indexid }}_sm.jpg" alt="Card image cap">{% endif %}
         </a>
-        <div class="card text-center" id="content">
+        <div class="card text-center">
             <h3 class="card-title">{{ item.title }}</h3>
             <p class="card-text"><strong>Date:</strong> {{ item.date }}</p>
             <p>
                 {% assign subjects = item.subject | split:';' %}
                 {% for subject in subjects %}{% if subject !=" " %}
-                <a class="btn btn-sm btn-secondary m-1" data-filter="{{ subject | trim }}" href="{{ subject | trim | uri_escape | prepend: "/browse/#" | relative_url }}">{{ subject }}</a> 
+                <a class="btn btn-sm btn-secondary m-1 filter" data-filter="{{ subject | trim }}" href="{{ subject | trim | uri_escape | prepend: "/browse/#" | relative_url }}">{{ subject }}</a> 
                 {% endif %}{% endfor %} 
             </p>
             <p class="card-text">{{item.description | truncatewords: 20}}</p>

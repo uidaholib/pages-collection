@@ -6,4 +6,8 @@
        effect: "fadeIn",
        failure_limit: Math.max($imgs.length - 1, 0)
     });
+    // init tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })    
 </script>

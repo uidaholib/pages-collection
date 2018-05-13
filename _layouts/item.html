@@ -21,7 +21,7 @@ layout: default
 
         <div class="col-md-4" >
             <div id="item-image"></div>
-            <div id="item-link" class="text-center mt-2"></div>
+            <div id="item-link" class="text-center my-2"></div>
         </div>
         <div class="col-md-8">
             <div id="item-metadata" class="metadata">
@@ -31,7 +31,7 @@ layout: default
     </div>
 
     <div class="text-center">
-        <a class="btn btn-secondary" href="{{ "/browse/" | relative_url }}">❮ Back to Collection Browse</a>
+        <a class="btn btn-secondary" href="{{ "/browse/" | relative_url }}">&laquo; Back to Collection Browse</a>
     </div>
 </div>
 
@@ -46,7 +46,7 @@ var record = items[queryString];
 var itemTitle = record.title;
 document.getElementById("bc-title").innerHTML = itemTitle;
 document.getElementById("item-title").innerHTML = itemTitle;
-var itemImage = '<img class="img-thumbnail img-responsive" src="{{ site.baseurl }}/objects/thumbs/' + queryString + '_sm.jpg" alt="item thumbnail">';
+var itemImage = '<img class="img-thumbnail" src="{{ site.baseurl }}/objects/thumbs/' + queryString + '_sm.jpg" alt="item thumbnail">';
 document.getElementById("item-image").innerHTML = itemImage;
 var itemLink = '<a href="{{ "/objects/" | absolute_url }}' + record.filename + '" target="_blank" class="btn btn-primary" title="Object download">Download Object</a>';
 document.getElementById("item-link").innerHTML = itemLink;
