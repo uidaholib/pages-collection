@@ -1,5 +1,5 @@
 # pages-collection
-# a Jekyll Digital Collection Generator 
+# a Jekyll Digital Collection Generator
 # designed for GH-Pages
 
 # Site settings
@@ -9,11 +9,16 @@ title: GH-Pages Collection
 # tagline appears in banner
 tagline: a theme for building simple digital exhibits
 # description appears in meta tags and other locations
+# this description might appear in search result lists, keep around 160 characters max
 description: "A more complete description that will appear in meta tags and other locations where appropriate"
-# keywords appear in meta tags 
+# keywords appear in meta tags
 keywords: "university of idaho, digital collections, digital humanities"
-# creator email for meta tags
+# creator of the digital collection, to appear in meta tags
+author: evanwill
+# creator contact email for meta tags
 email: ewilliamson@uidaho.edu
+# collection project date, when did you publish this
+collection-date: "2018"
 
 # url is your gh-pages base, username.github.io
 url: https://uidaholib.github.io
