@@ -1,4 +1,0 @@
----
-layout: browse
-title: Browse
----

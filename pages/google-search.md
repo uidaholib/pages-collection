@@ -1,6 +1,6 @@
 ---
+title: Google CSE
 layout: page
-title: Search
 ---
 
 ## Google Site Search

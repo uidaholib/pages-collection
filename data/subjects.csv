@@ -6,7 +6,7 @@
 {%- assign subjects = subjects | split: ";" -%}
 {%- assign uniqueSubjects = subjects | uniq | sort -%}
 subject,count,link
-{%- for unique in uniqueSubjects -%}
+{% for unique in uniqueSubjects %}
 {%- assign count = subjects | where_exp: "item", "item == unique" | size -%}
 "{{ unique  | capitalize }}",{{ count }},"{{ unique | uri_escape | prepend: "/browse/#" | absolute_url }}"
 {% endfor %}
