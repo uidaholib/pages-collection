@@ -1,8 +1,8 @@
 # pages-collection
 
-https://github.com/uidaholib/pages-collection
+**Active Development on this project has moved to [CollectionBuilder-GH](https://github.com/CollectionBuilder/collectionbuilder-gh)**
 
-> **project in progress!**
+https://github.com/uidaholib/pages-collection
 
 A project to generate a free and simple digital collection site using [gh-pages](https://pages.github.com/) given:
 
