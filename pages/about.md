@@ -6,6 +6,8 @@ permalink: /about/
 
 # About {{ site.title }}
 
+**Active Development on this project has moved to [CollectionBuilder-GH](https://github.com/CollectionBuilder/collectionbuilder-gh)**
+
 This site is generated using `pages-collection`, a project to generate a free and simple digital collection using [gh-pages](https://pages.github.com/) from:
 
 - a CSV of collection metadata
